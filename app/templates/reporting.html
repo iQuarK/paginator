@@ -4,6 +4,26 @@
     <!-- location data table -->
 
     <p>Hello !</p>
+      <table id="pagination">
+        <tr>
+          <td ng-repeat="results in resultsPerPage" ng-class="{current: selectedResultsPerPage == results}" ng-click="setResultsPerPage(results)">
+            <span>{{ results }}</span>
+          </td>
+          <td class="separator"></td>
+          <td ng-repeat="page in [] | RangeFilter:totalPages" ng-class="{current: currentPage == page}" ng-click="setPage(page)">
+            <span>{{ page+1 }}</span>
+          </td>
+          <td ng-click="setPage(totalPages)" ng-class="{current: currentPage == totalPages}"><span>Last</span></td>
+        </tr>
+      </table>
 
+      <table id="results">
+        <tr>
+          <th>Countries</th><th>Views</th>
+        </tr>
+        <tr ng-repeat="country in page">
+          <td>{{ country.name }}</td><td>{{ country.views }}</td>
+        </tr>
+      </table>
 
 </div>

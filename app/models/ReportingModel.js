@@ -99,6 +99,11 @@ function ReportingModel()
     ]
 
     // Add a property 'views' to each element of the countries array using a loop
+    var length = this.countries.length;
+    
+    for (var idx=0; idx<length; idx++) {
+      this.countries[idx] = angular.extend(this.countries[idx], {views: parseInt(Math.random()*1000)});
+    }
 
 }
 

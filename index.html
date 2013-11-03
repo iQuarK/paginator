@@ -13,10 +13,23 @@
 
     <script type="text/javascript" src="app/Application.js"></script>
     <script type="text/javascript" src="app/models/ReportingModel.js"></script>
+    <script type="text/javascript" src="app/filters/RangeFilter.js"></script>
 
     <script type="text/javascript" src="app/controllers/ReportingController.js"></script>
+  <style type="text/css">
+    .separator { width: 50px; }
+    
+    table { margin: 0 auto; }
+    
+    table#pagination { color: blue; border: blue solid thin; font-size: 14px; }
+    table#pagination .current { font-weight: bold; }
+    table#pagination td { min-width: 40px; text-align: center; }
+    table#pagination td:hover { background: lightblue; }
 
-
+    table#results th { text-align: left; }
+    table#results td { min-width: 150px; }
+    table#results td:first-child { padding-right: 15px; }
+  </style>
 </head>
 <body>
 

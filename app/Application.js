@@ -2,7 +2,7 @@
 
 
 
-var app = angular.module( "assignment", [ ] );
+var app = angular.module( "assignment", ['assignment.filters' ] );
 
 /* The factory creates the various models for the application */
 app.factory('reportingModel', function()
@@ -24,8 +24,6 @@ app.config(function ($routeProvider)
         })
         .otherwise({ redirectTo: '/reporting' });
 });
-
-
 
 
 
