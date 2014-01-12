@@ -10,8 +10,33 @@
             <span>{{ results }}</span>
           </td>
           <td class="separator"></td>
-          <td ng-repeat="page in [] | RangeFilter:totalPages" ng-class="{current: currentPage == page}" ng-click="setPage(page)">
+          <td ng-click="setPage(0)">
+            <span ng-class="{current: currentPage == 0}">
+              First
+            </span>
+          </td>
+          <td ng-show="currentPage>0" ng-click="setPage(currentPage-1)">
+            <span>
+              Previous
+            </span>
+          </span>
+          <td ng-show="currentPage>2">
+            <span>
+              ...
+            </span>
+          </td>
+          <td ng-repeat="page in [] | RangeFilter:limitPagination:firstPagination" ng-class="{current: currentPage == page}" ng-click="setPage(page)">
             <span>{{ page+1 }}</span>
+          </td>
+          <td ng-show="currentPage<totalPages-2">
+            <span>
+              ...
+            </span>
+          </td>
+          <td ng-show="currentPage<totalPages" ng-click="setPage(currentPage+1)">
+            <span>
+              Next
+            </span>
           </td>
           <td ng-click="setPage(totalPages)" ng-class="{current: currentPage == totalPages}"><span>Last</span></td>
         </tr>

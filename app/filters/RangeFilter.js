@@ -3,9 +3,10 @@
 angular.module('assignment.filters', [])
   .filter('RangeFilter', function() {
 
-    return function(array, limit) {
-      if (typeof limit === 'number') {
-        for (var idx = 0; idx<=limit; idx++) {
+    return function(array, limit, first) {
+      first = (first !== undefined)?first:0;
+      if (typeof limit === 'number' && typeof first === 'number') {
+        for (var idx = first; idx<=limit; idx++) {
           array.push(idx);
         }
       }

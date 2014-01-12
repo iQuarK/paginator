@@ -39,7 +39,26 @@ app.controller('ReportingController', function ($scope, reportingModel)
   $scope.$watch('selectedResultsPerPage', function() {
     refreshTotalPages();
   });
-  
+
+  // when the curreng page changes, the pagination numbers above are changed
+  $scope.$watch('page', function(value) {
+    // if we are in the last 5 numbers
+    if ($scope.currentPage+2>$scope.totalPages) {
+      $scope.limitPagination = $scope.totalPages;
+      $scope.firstPagination = ($scope.totalPages-5<0)? 0 : $scope.totalPages-5;
+    } else {
+      // if we are in the first 5 numbers
+      if ($scope.currentPage-2<0) {
+        $scope.limitPagination = ($scope.totalPages>=4)? 4 : $scope.totalPages;
+        $scope.firstPagination = 0;
+      } else {
+        // if we are in the middle
+        $scope.limitPagination = $scope.currentPage+2;
+        $scope.firstPagination = $scope.currentPage-2;
+      }
+    }
+  });
+
   // if the total of pages changes and we are out of range, we will be moved to the last one
   $scope.$watch('totalPages', function(value) {
     if ($scope.currentPage>value) {
